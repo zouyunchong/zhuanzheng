@@ -537,6 +537,47 @@ section.alt {
   font-weight: 500;
 }
 
+.kpi-card-detail {
+  text-align: left;
+  padding: 28px 20px;
+}
+
+.kpi-card-detail .num,
+.kpi-card-detail .label {
+  text-align: center;
+}
+
+.kpi-detail-list {
+  list-style: none;
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px solid var(--border);
+}
+
+.kpi-detail-list li {
+  font-size: 11px;
+  color: var(--sub);
+  line-height: 1.5;
+  padding: 4px 0;
+  display: flex;
+  gap: 6px;
+}
+
+.kpi-detail-list li::before {
+  content: '';
+  width: 4px;
+  height: 4px;
+  background: var(--cyan);
+  border-radius: 50%;
+  flex-shrink: 0;
+  margin-top: 7px;
+}
+
+.kpi-detail-list strong {
+  color: rgba(255, 255, 255, 0.75);
+  font-weight: 600;
+}
+
 /* ── Dimension Cards ── */
 .dim-single .dim-card {
   box-shadow: var(--card-shadow);
@@ -1040,9 +1081,17 @@ section.alt {
         <div class="num">80<small>+</small></div>
         <div class="label">代运营项目需求</div>
       </div>
-      <div class="kpi-card">
-        <div class="num">100<small>%</small></div>
-        <div class="label">试用期全勤出勤</div>
+      <div class="kpi-card kpi-card-detail">
+        <div class="num">6</div>
+        <div class="label">重点项目成果</div>
+        <ul class="kpi-detail-list">
+          <li><strong>商务建站</strong> Zettlab / Evotrex</li>
+          <li><strong>内部工具</strong> Pitch 红人邮件</li>
+          <li><strong>性能优化</strong> Lymow 独立站</li>
+          <li><strong>模板沉淀</strong> Shopify 标准化</li>
+          <li><strong>AI 赋能</strong> 开发工作流</li>
+          <li><strong>高并发交付</strong> 120+/80+ 需求</li>
+        </ul>
       </div>
       <div class="kpi-card">
         <div class="num">0</div>
