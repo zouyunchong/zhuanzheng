@@ -1,0 +1,1449 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>邹云冲 · 试用期转正答辩 · Global OneClick</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy: #002b5b;
+  --navy-dark: #001a38;
+  --blue: #0066cc;
+  --cyan: #00a3e0;
+  --bg: #ffffff;
+  --bg-alt: #f4f7fb;
+  --text: #1a2332;
+  --sub: #5a6578;
+  --border: #dde4ee;
+  --card-shadow: 0 4px 24px rgba(0, 43, 91, 0.08);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Inter', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.7;
+  font-size: 16px;
+  overflow-x: hidden;
+}
+
+/* ── Nav ── */
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  background: rgba(255, 255, 255, 0.96);
+  border-bottom: 1px solid var(--border);
+  padding: 0 40px;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.nav-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.nav-logo {
+  width: 36px;
+  height: 36px;
+  background: var(--navy);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-weight: 800;
+  font-size: 13px;
+  letter-spacing: -0.5px;
+}
+
+.nav-title {
+  font-weight: 700;
+  font-size: 15px;
+  color: var(--navy);
+}
+
+.nav-title span {
+  display: block;
+  font-size: 11px;
+  font-weight: 400;
+  color: var(--sub);
+  letter-spacing: 0.5px;
+}
+
+.nav-links {
+  display: flex;
+  gap: 20px;
+  list-style: none;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: var(--sub);
+  font-size: 12px;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.nav-links a:hover {
+  color: var(--navy);
+}
+
+/* ── Layout ── */
+.container {
+  width: min(1200px, 90%);
+  margin: 0 auto;
+}
+
+section {
+  position: relative;
+  height: 100vh;
+  height: 100dvh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 64px 0 40px;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+section > .container {
+  width: min(1200px, 90%);
+  margin: 0 auto;
+  max-height: calc(100dvh - 104px);
+  overflow: hidden;
+}
+
+.page-indicator {
+  position: fixed;
+  bottom: 28px;
+  right: max(5%, calc((100% - 1200px) / 2));
+  z-index: 99;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  color: rgba(0, 43, 91, 0.35);
+  pointer-events: none;
+  transition: opacity 0.2s;
+}
+
+.page-indicator.on-dark {
+  color: rgba(255, 255, 255, 0.35);
+}
+
+section.alt {
+  background: var(--bg-alt);
+}
+
+.section-head {
+  margin-bottom: 28px;
+}
+
+.section-label {
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--cyan);
+  margin-bottom: 12px;
+}
+
+.section-title {
+  font-size: 36px;
+  font-weight: 800;
+  color: var(--navy);
+  margin-bottom: 12px;
+  line-height: 1.25;
+}
+
+.section-desc {
+  color: var(--sub);
+  font-size: 16px;
+  max-width: 640px;
+  margin-bottom: 0;
+}
+
+.slide-dense .section-title {
+  font-size: 30px;
+  margin-bottom: 8px;
+}
+
+.slide-dense .section-desc {
+  font-size: 15px;
+}
+
+/* ── Hero ── */
+.hero {
+  position: relative;
+  overflow: hidden;
+  border-bottom: 1px solid var(--border);
+  background: #fafbfd;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(rgba(0, 43, 91, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 43, 91, 0.03) 1px, transparent 1px);
+  background-size: 64px 64px;
+  mask-image: radial-gradient(ellipse 80% 70% at 30% 50%, black 20%, transparent 75%);
+}
+
+.hero::after {
+  content: '';
+  position: absolute;
+  top: -20%;
+  right: -10%;
+  width: 640px;
+  height: 640px;
+  background: radial-gradient(circle, rgba(0, 163, 224, 0.12) 0%, transparent 65%);
+  pointer-events: none;
+}
+
+.hero-inner {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  gap: 72px;
+  align-items: center;
+}
+
+.hero-eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 32px;
+}
+
+.hero-line {
+  display: block;
+  width: 40px;
+  height: 2px;
+  background: linear-gradient(90deg, var(--cyan), transparent);
+}
+
+.hero-eyebrow span:last-child {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--sub);
+}
+
+.hero h1 {
+  font-size: clamp(40px, 5vw, 58px);
+  font-weight: 800;
+  color: var(--navy);
+  line-height: 1.12;
+  margin-bottom: 28px;
+  letter-spacing: -0.02em;
+}
+
+.hero-identity {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 28px;
+  flex-wrap: wrap;
+}
+
+.hero-name {
+  font-size: 26px;
+  font-weight: 700;
+  color: var(--navy);
+  letter-spacing: 0.12em;
+}
+
+.hero-divider {
+  width: 1px;
+  height: 22px;
+  background: linear-gradient(180deg, transparent, var(--cyan), transparent);
+}
+
+.hero-role {
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--cyan);
+}
+
+.hero-tagline {
+  font-size: 16px;
+  color: var(--sub);
+  max-width: 460px;
+  line-height: 1.85;
+  padding-left: 20px;
+  border-left: 2px solid rgba(0, 163, 224, 0.35);
+}
+
+.hero-tags {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 32px;
+}
+
+.hero-tags span {
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  color: var(--navy);
+  padding: 8px 16px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(4px);
+}
+
+.hero-card-wrap {
+  position: relative;
+}
+
+.hero-card-wrap::before {
+  content: '';
+  position: absolute;
+  inset: 16px -16px -16px 16px;
+  border-radius: 20px;
+  border: 1px solid rgba(0, 163, 224, 0.25);
+  pointer-events: none;
+}
+
+.hero-card {
+  position: relative;
+  border-radius: 20px;
+  overflow: hidden;
+  background: linear-gradient(155deg, #004080 0%, #002b5b 45%, #001428 100%);
+  box-shadow:
+    0 40px 80px rgba(0, 26, 56, 0.35),
+    0 0 0 1px rgba(255, 255, 255, 0.06) inset;
+}
+
+.hero-card::before {
+  content: 'GOC';
+  position: absolute;
+  top: -20px;
+  right: -10px;
+  font-size: 140px;
+  font-weight: 800;
+  color: rgba(255, 255, 255, 0.03);
+  line-height: 1;
+  pointer-events: none;
+  letter-spacing: -0.05em;
+}
+
+.hero-card-accent {
+  height: 3px;
+  background: linear-gradient(90deg, var(--cyan), rgba(0, 163, 224, 0.2) 60%, transparent);
+}
+
+.hero-card-inner {
+  position: relative;
+  padding: 52px 44px 44px;
+  color: #fff;
+}
+
+.hero-card .slogan {
+  display: inline-block;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 4px;
+  color: var(--cyan);
+  margin-bottom: 28px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.hero-card h2 {
+  font-size: clamp(26px, 3vw, 34px);
+  font-weight: 800;
+  line-height: 1.25;
+  margin-bottom: 24px;
+  letter-spacing: -0.02em;
+}
+
+.hero-card p {
+  font-size: 15px;
+  color: rgba(255, 255, 255, 0.72);
+  line-height: 1.9;
+  max-width: 420px;
+}
+
+.hero-card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 40px;
+  padding-top: 24px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.hero-card-footer span:first-child {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.hero-card-footer span:last-child {
+  font-size: 12px;
+  letter-spacing: 2px;
+  color: rgba(255, 255, 255, 0.45);
+}
+
+/* ── Modules Overview ── */
+.modules {
+  background: #fff;
+  border-bottom: 1px solid var(--border);
+}
+
+.module-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.module-card {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 22px 20px;
+  box-shadow: var(--card-shadow);
+  border-top: 3px solid var(--navy);
+}
+
+.module-card:nth-child(2) { border-top-color: var(--cyan); }
+.module-card:nth-child(3) { border-top-color: var(--blue); }
+.module-card:nth-child(4) { border-top-color: #004d99; }
+.module-card:nth-child(5) { border-top-color: #0077b6; }
+.module-card:nth-child(6) { border-top-color: var(--navy-dark); }
+
+.module-num {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: var(--cyan);
+  margin-bottom: 14px;
+}
+
+.module-card h3 {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--navy);
+  margin-bottom: 8px;
+}
+
+.module-card p {
+  font-size: 13px;
+  color: var(--sub);
+  line-height: 1.65;
+}
+
+.module-card .module-en {
+  display: block;
+  margin-top: 12px;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: rgba(0, 43, 91, 0.35);
+}
+
+/* ── KPI ── */
+.kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.kpi-card {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 36px 24px;
+  text-align: center;
+  box-shadow: var(--card-shadow);
+}
+
+.kpi-card .num {
+  font-size: 48px;
+  font-weight: 800;
+  color: var(--navy);
+  line-height: 1;
+}
+
+.kpi-card .num small {
+  font-size: 24px;
+}
+
+.kpi-card .label {
+  margin-top: 10px;
+  font-size: 14px;
+  color: var(--sub);
+  font-weight: 500;
+}
+
+/* ── Dimension Cards ── */
+.dim-single .dim-card {
+  box-shadow: var(--card-shadow);
+}
+
+.dim-single .dim-body li {
+  font-size: 15px;
+  padding: 12px 0 12px 20px;
+}
+
+.dim-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+}
+
+.dim-card {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: var(--card-shadow);
+}
+
+.dim-header {
+  background: var(--navy);
+  color: #fff;
+  padding: 20px 28px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.dim-icon {
+  width: 40px;
+  height: 40px;
+  background: rgba(255,255,255,0.12);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  flex-shrink: 0;
+}
+
+.dim-header h3 {
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.dim-header p {
+  font-size: 12px;
+  color: rgba(255,255,255,0.65);
+  margin-top: 2px;
+}
+
+.dim-body {
+  padding: 24px 28px;
+}
+
+.dim-body ul {
+  list-style: none;
+}
+
+.dim-body li {
+  position: relative;
+  padding: 10px 0 10px 20px;
+  border-bottom: 1px solid var(--border);
+  font-size: 14px;
+  color: var(--text);
+}
+
+.dim-body li:last-child {
+  border-bottom: none;
+}
+
+.dim-body li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 18px;
+  width: 6px;
+  height: 6px;
+  background: var(--cyan);
+  border-radius: 50%;
+}
+
+.dim-body li strong {
+  color: var(--navy);
+}
+
+/* ── Project Cards ── */
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+}
+
+.project-card {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 22px 20px;
+  box-shadow: var(--card-shadow);
+}
+
+.project-card .tag {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  color: var(--blue);
+  background: #e8f2fc;
+  padding: 4px 10px;
+  border-radius: 4px;
+  margin-bottom: 14px;
+}
+
+.project-card h4 {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--navy);
+  margin-bottom: 8px;
+}
+
+.project-card p {
+  font-size: 13px;
+  color: var(--sub);
+  line-height: 1.6;
+}
+
+/* ── AI Flow ── */
+.ai-flow {
+  display: flex;
+  align-items: stretch;
+  gap: 0;
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: var(--card-shadow);
+}
+
+.ai-step {
+  flex: 1;
+  padding: 28px 20px;
+  text-align: center;
+  border-right: 1px solid var(--border);
+}
+
+.ai-step:last-child {
+  border-right: none;
+}
+
+.ai-step .step-num {
+  width: 32px;
+  height: 32px;
+  background: var(--navy);
+  color: #fff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  font-weight: 700;
+  margin: 0 auto 12px;
+}
+
+.ai-step h4 {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--navy);
+  margin-bottom: 6px;
+}
+
+.ai-step p {
+  font-size: 12px;
+  color: var(--sub);
+}
+
+/* ── Values Grid ── */
+.values-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 16px;
+}
+
+.value-item {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 24px 16px;
+  text-align: center;
+  box-shadow: var(--card-shadow);
+}
+
+.value-item .icon {
+  font-size: 28px;
+  margin-bottom: 12px;
+}
+
+.value-item h4 {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--navy);
+  margin-bottom: 8px;
+}
+
+.value-item p {
+  font-size: 12px;
+  color: var(--sub);
+  line-height: 1.6;
+}
+
+/* ── Summary ── */
+.summary-box {
+  background: var(--navy);
+  border-radius: 16px;
+  padding: 36px 40px;
+  color: #fff;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+}
+
+.summary-box h3 {
+  font-size: 24px;
+  font-weight: 800;
+  margin-bottom: 20px;
+  color: var(--cyan);
+}
+
+.summary-box p {
+  font-size: 15px;
+  color: rgba(255,255,255,0.82);
+  line-height: 1.9;
+}
+
+.summary-box ul {
+  list-style: none;
+}
+
+.summary-box li {
+  padding: 8px 0 8px 20px;
+  position: relative;
+  font-size: 14px;
+  color: rgba(255,255,255,0.82);
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.summary-box li:last-child {
+  border-bottom: none;
+}
+
+.summary-box li::before {
+  content: '→';
+  position: absolute;
+  left: 0;
+  color: var(--cyan);
+}
+
+/* ── Future ── */
+.future-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.future-card {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 28px 24px;
+  box-shadow: var(--card-shadow);
+  border-top: 4px solid var(--cyan);
+}
+
+.future-card .num {
+  font-size: 32px;
+  font-weight: 800;
+  color: var(--border);
+  margin-bottom: 12px;
+}
+
+.future-card h4 {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--navy);
+  margin-bottom: 10px;
+}
+
+.future-card p {
+  font-size: 14px;
+  color: var(--sub);
+  line-height: 1.7;
+}
+
+/* ── End ── */
+.end {
+  text-align: center;
+  background: var(--navy-dark);
+  color: #fff;
+  flex-direction: column;
+}
+
+.end .slogan {
+  font-size: 13px;
+  letter-spacing: 4px;
+  color: rgba(255,255,255,0.5);
+  margin-bottom: 24px;
+}
+
+.end h2 {
+  font-size: 56px;
+  font-weight: 800;
+  margin-bottom: 16px;
+}
+
+.end p {
+  font-size: 18px;
+  color: rgba(255,255,255,0.65);
+  margin-bottom: 40px;
+}
+
+.end .qa {
+  display: inline-block;
+  border: 2px solid rgba(255,255,255,0.3);
+  border-radius: 8px;
+  padding: 14px 48px;
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  margin-bottom: 36px;
+}
+
+.end-footer {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.35);
+}
+
+/* ── Responsive ── */
+@media (max-width: 960px) {
+  .hero-inner { grid-template-columns: 1fr; gap: 48px; }
+  .hero-card-wrap::before { display: none; }
+  .kpi-grid { grid-template-columns: repeat(2, 1fr); }
+  .dim-grid { grid-template-columns: 1fr; }
+  .project-grid { grid-template-columns: 1fr 1fr; }
+  .values-grid { grid-template-columns: repeat(3, 1fr); }
+  .summary-box { grid-template-columns: 1fr; }
+  .future-grid { grid-template-columns: 1fr; }
+  .ai-flow { flex-direction: column; }
+  .ai-step { border-right: none; border-bottom: 1px solid var(--border); }
+  .nav-links { display: none; }
+  .module-grid { grid-template-columns: 1fr 1fr; }
+}
+
+@media (max-width: 600px) {
+  .hero h1 { font-size: 36px; }
+  .kpi-grid { grid-template-columns: 1fr 1fr; }
+  .project-grid { grid-template-columns: 1fr; }
+  .values-grid { grid-template-columns: 1fr 1fr; }
+  .module-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- Nav -->
+<nav class="nav">
+  <div class="nav-brand">
+    <div class="nav-logo">GOC</div>
+    <div class="nav-title">
+      Global OneClick
+      <span>邹云冲 · 前端建站 · 试用期转正答辩</span>
+    </div>
+  </div>
+  <ul class="nav-links">
+    <li><a href="#overview">01 核心数据</a></li>
+    <li><a href="#dim-work">02 能力维度</a></li>
+    <li><a href="#projects">03 重点项目</a></li>
+    <li><a href="#ai">04 AI 赋能</a></li>
+    <li><a href="#values">05 文化价值观</a></li>
+    <li><a href="#summary">06 总结规划</a></li>
+  </ul>
+</nav>
+
+<!-- Hero -->
+<section class="hero" id="top">
+  <div class="container">
+    <div class="hero-inner">
+      <div class="hero-left">
+        <div class="hero-eyebrow">
+          <span class="hero-line"></span>
+          <span>Probation Defense · 2026</span>
+        </div>
+        <h1>试用期转正答辩</h1>
+        <div class="hero-identity">
+          <span class="hero-name">邹云冲</span>
+          <span class="hero-divider"></span>
+          <span class="hero-role">前端建站</span>
+        </div>
+        <p class="hero-tagline">
+          试用期期间，聚焦跨境电商独立站开发与交付，持续探索 AI 赋能，提升项目交付效率与质量。
+        </p>
+        <div class="hero-tags">
+          <span>跨境电商</span>
+          <span>独立站开发</span>
+          <span>AI 赋能</span>
+        </div>
+      </div>
+      <div class="hero-card-wrap">
+        <div class="hero-card">
+          <div class="hero-card-accent"></div>
+          <div class="hero-card-inner">
+            <div class="slogan">ONE CLICK · ONE MILLION</div>
+            <h2>Accelerate Your Global Business Journey</h2>
+            <p>以标准化模板与 AI 工具链驱动高效交付，助力品牌出海独立站从 0 到 1 快速上线，保障项目节点与质量双达标。</p>
+            <div class="hero-card-footer">
+              <span>Global OneClick</span>
+              <span>出海一叮</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Modules -->
+<section class="modules" id="modules">
+  <div class="container">
+    <div class="section-head">
+      <div class="section-label">Contents</div>
+      <h2 class="section-title">答辩模块</h2>
+      <p class="section-desc">本次转正答辩共六个模块，涵盖试用期核心产出、能力评估与未来规划。</p>
+    </div>
+    <div class="module-grid">
+      <a href="#overview" class="module-card">
+        <div class="module-num">01</div>
+        <h3>核心交付数据</h3>
+        <p>众筹 / 代运营项目交付量、峰值并行与质量保障指标。</p>
+        <span class="module-en">Performance Overview</span>
+      </a>
+      <a href="#dim-work" class="module-card">
+        <div class="module-num">02</div>
+        <h3>四大能力维度</h3>
+        <p>岗位工作、工作效率、核心能力、文化价值观全面复盘。</p>
+        <span class="module-en">Evaluation Dimensions</span>
+      </a>
+      <a href="#projects" class="module-card">
+        <div class="module-num">03</div>
+        <h3>重点项目成果</h3>
+        <p>商务建站、内部工具、性能优化与标准化沉淀。</p>
+        <span class="module-en">Key Projects</span>
+      </a>
+      <a href="#ai" class="module-card">
+        <div class="module-num">04</div>
+        <h3>AI 赋能工作流</h3>
+        <p>AI 融入需求、开发、测试与交付全链路提效实践。</p>
+        <span class="module-en">AI Empowerment</span>
+      </a>
+      <a href="#values" class="module-card">
+        <div class="module-num">05</div>
+        <h3>文化价值观践行</h3>
+        <p>合规守纪、价值贡献、全勤成长与团队协作表现。</p>
+        <span class="module-en">Cultural Values</span>
+      </a>
+      <a href="#summary" class="module-card">
+        <div class="module-num">06</div>
+        <h3>总结与未来规划</h3>
+        <p>试用期个人总结、反馈诉求与转正后成长方向。</p>
+        <span class="module-en">Summary & Outlook</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- KPI -->
+<section id="overview">
+  <div class="container">
+    <div class="section-head">
+      <div class="section-label">Performance Overview</div>
+      <h2 class="section-title">核心交付数据</h2>
+      <p class="section-desc">试用期核心产出指标，体现高并发项目交付能力与稳定质量保障。</p>
+    </div>
+    <div class="kpi-grid">
+      <div class="kpi-card">
+        <div class="num">120<small>+</small></div>
+        <div class="label">众筹项目交付需求</div>
+      </div>
+      <div class="kpi-card">
+        <div class="num">80<small>+</small></div>
+        <div class="label">代运营项目需求</div>
+      </div>
+      <div class="kpi-card">
+        <div class="num">28</div>
+        <div class="label">峰值月并行众筹项目</div>
+      </div>
+      <div class="kpi-card">
+        <div class="num">0</div>
+        <div class="label">重大线上事故</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Dimension: 岗位工作 -->
+<section class="alt slide-dense" id="dim-work">
+  <div class="container">
+    <div class="section-head">
+      <div class="section-label">Evaluation · 01/04</div>
+      <h2 class="section-title">岗位工作</h2>
+      <p class="section-desc">Job Responsibilities — 试用期岗位核心产出与交付成果。</p>
+    </div>
+    <div class="dim-single">
+      <div class="dim-card">
+        <div class="dim-header">
+          <div class="dim-icon">💼</div>
+          <div>
+            <h3>岗位工作</h3>
+            <p>Job Responsibilities</p>
+          </div>
+        </div>
+        <div class="dim-body">
+          <ul>
+            <li>累计完成 <strong>120+ 众筹项目需求</strong>、<strong>80+ 代运营项目需求</strong> 交付与维护</li>
+            <li>商务独立站：<strong>Zettlab / Evotrex</strong> 需求对接、页面搭建与联调测试</li>
+            <li>内部工具：参与开发 <strong>Pitch 红人邮件收发工具</strong></li>
+            <li>性能优化：完成 <strong>Lymow 独立站</strong> 图片压缩与代码精简，提升加载速度</li>
+            <li>Shopify 开发：沉淀标准化模板与模块，提升同类项目交付效率</li>
+            <li>AI 探索：将 AI 应用于页面搭建、原型生成、代码片段与问题排查，显著缩短开发周期</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Dimension: 工作效率 -->
+<section class="slide-dense" id="dim-efficiency">
+  <div class="container">
+    <div class="section-head">
+      <div class="section-label">Evaluation · 02/04</div>
+      <h2 class="section-title">个人工作效率</h2>
+      <p class="section-desc">Work Efficiency — 任务管理、高效执行与跨部门协作。</p>
+    </div>
+    <div class="dim-single">
+      <div class="dim-card">
+        <div class="dim-header">
+          <div class="dim-icon">⚡</div>
+          <div>
+            <h3>个人工作效率</h3>
+            <p>Work Efficiency</p>
+          </div>
+        </div>
+        <div class="dim-body">
+          <ul>
+            <li>任务管理：建立日/周待办清单，按优先级排序，借助 AI 辅助规划与风险预判</li>
+            <li>高效执行：月均交付 <strong>28 个众筹 / 18 个代运营</strong> 项目需求，依托模板化与 AI 提效</li>
+            <li>主动反馈：及时同步技术风险与需求变更，利用 AI 快速定位报错与问题根因</li>
+            <li>跨部门沟通：定期与运营、商务、测试团队同步进度，AI 辅助整理会议纪要及需求清单</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Dimension: 核心能力 -->
+<section class="alt slide-dense" id="dim-core">
+  <div class="container">
+    <div class="section-head">
+      <div class="section-label">Evaluation · 03/04</div>
+      <h2 class="section-title">核心工作能力</h2>
+      <p class="section-desc">Core Competencies — 学习成长、细致严谨与应急处理能力。</p>
+    </div>
+    <div class="dim-single">
+      <div class="dim-card">
+        <div class="dim-header">
+          <div class="dim-icon">🎯</div>
+          <div>
+            <h3>核心工作能力</h3>
+            <p>Core Competencies</p>
+          </div>
+        </div>
+        <div class="dim-body">
+          <ul>
+            <li>学习总结：梳理独立站搭建逻辑，将 AI 能力融入电商前端开发工作流</li>
+            <li>细致严谨：多轮兼容性、链接、样式检查，AI 辅助自动化测试与文案合规审查</li>
+            <li>沟通能力：向商务/运营清晰阐述技术方案，AI 生成沟通计划与需求文档</li>
+            <li>应急响应：快速处理紧急项目与页面异常，AI 辅助快速搭建框架与故障排查</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Dimension: 文化价值观 -->
+<section class="slide-dense" id="dim-culture">
+  <div class="container">
+    <div class="section-head">
+      <div class="section-label">Evaluation · 04/04</div>
+      <h2 class="section-title">文化价值观践行</h2>
+      <p class="section-desc">Cultural Values — 合规守纪、价值贡献与团队协作表现。</p>
+    </div>
+    <div class="dim-single">
+      <div class="dim-card">
+        <div class="dim-header">
+          <div class="dim-icon">🤝</div>
+          <div>
+            <h3>文化价值观践行</h3>
+            <p>Cultural Values</p>
+          </div>
+        </div>
+        <div class="dim-body">
+          <ul>
+            <li>合规守纪：无红线违规，严格遵守信息安全与合规规范</li>
+            <li>价值贡献：稳定项目交付与技术支持，助力团队整体效率提升</li>
+            <li>出勤纪律：<strong>全勤</strong>，无迟到早退记录</li>
+            <li>主动成长：持续学习 Shopify 开发、性能优化与 AI 新技术</li>
+            <li>团队协作：主动承担任务，分享 AI 工具使用经验，跨部门积极配合</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Key Projects -->
+<section class="alt" id="projects">
+  <div class="container">
+    <div class="section-head">
+      <div class="section-label">Key Projects</div>
+      <h2 class="section-title">重点项目成果</h2>
+      <p class="section-desc">代表性项目覆盖商务建站、内部工具、性能优化与 AI 赋能四大方向。</p>
+    </div>
+    <div class="project-grid">
+      <div class="project-card">
+        <div class="tag">商务建站</div>
+        <h4>Zettlab / Evotrex 独立站</h4>
+        <p>负责需求对接、页面模块搭建、多端兼容测试，保障商务独立站按时高质量上线。</p>
+      </div>
+      <div class="project-card">
+        <div class="tag">内部工具</div>
+        <h4>Pitch 红人邮件工具</h4>
+        <p>参与 Pitch Influencer Partner Search Tool 开发，提升红人合作邮件收发与管理效率。</p>
+      </div>
+      <div class="project-card">
+        <div class="tag">性能优化</div>
+        <h4>Lymow 独立站提速</h4>
+        <p>图片压缩、代码精简、资源加载优化，显著改善页面加载速度与用户体验。</p>
+      </div>
+      <div class="project-card">
+        <div class="tag">标准化</div>
+        <h4>Shopify 模板沉淀</h4>
+        <p>梳理并标准化 Shopify 页面模板与模块，缩短同类众筹/代运营项目交付周期。</p>
+      </div>
+      <div class="project-card">
+        <div class="tag">AI 赋能</div>
+        <h4>AI 辅助开发工作流</h4>
+        <p>将 AI 融入页面搭建、代码生成、问题排查与文档整理，开发效率显著提升。</p>
+      </div>
+      <div class="project-card">
+        <div class="tag">高并发交付</div>
+        <h4>120+ 众筹 / 80+ 代运营需求</h4>
+        <p>保障各项目上线节点，多项目并行推进，零重大线上事故，质量稳定可控。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AI Workflow -->
+<section id="ai">
+  <div class="container">
+    <div class="section-head">
+      <div class="section-label">AI Empowerment</div>
+      <h2 class="section-title">AI 赋能工作流</h2>
+      <p class="section-desc">将 AI 工具深度融入日常开发流程，实现从需求到交付的全链路提效。</p>
+    </div>
+    <div class="ai-flow">
+      <div class="ai-step">
+        <div class="step-num">1</div>
+        <h4>需求分析</h4>
+        <p>AI 辅助梳理需求清单与风险点</p>
+      </div>
+      <div class="ai-step">
+        <div class="step-num">2</div>
+        <h4>原型 / 代码生成</h4>
+        <p>快速生成页面框架与代码片段</p>
+      </div>
+      <div class="ai-step">
+        <div class="step-num">3</div>
+        <h4>开发实现</h4>
+        <p>基于模板标准化高效落地</p>
+      </div>
+      <div class="ai-step">
+        <div class="step-num">4</div>
+        <h4>测试排查</h4>
+        <p>AI 辅助报错定位与兼容性检查</p>
+      </div>
+      <div class="ai-step">
+        <div class="step-num">5</div>
+        <h4>上线交付</h4>
+        <p>文档整理与跨团队同步确认</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Cultural Values -->
+<section class="alt" id="values">
+  <div class="container">
+    <div class="section-head">
+      <div class="section-label">Cultural Values</div>
+      <h2 class="section-title">文化价值观践行</h2>
+      <p class="section-desc">以 GOC 文化价值观为指引，在合规、贡献、成长与协作四个层面持续践行。</p>
+    </div>
+    <div class="values-grid">
+      <div class="value-item">
+        <div class="icon">🛡️</div>
+        <h4>合规守纪</h4>
+        <p>零红线违规，严格遵循信息安全规范</p>
+      </div>
+      <div class="value-item">
+        <div class="icon">📦</div>
+        <h4>价值贡献</h4>
+        <p>稳定交付 200+ 项目，支撑团队业务目标</p>
+      </div>
+      <div class="value-item">
+        <div class="icon">📅</div>
+        <h4>出勤全勤</h4>
+        <p>试用期全勤，无迟到早退</p>
+      </div>
+      <div class="value-item">
+        <div class="icon">📈</div>
+        <h4>主动成长</h4>
+        <p>持续学习 Shopify、性能优化与 AI 技术</p>
+      </div>
+      <div class="value-item">
+        <div class="icon">🌐</div>
+        <h4>团队协作</h4>
+        <p>跨部门配合，主动分享 AI 工具经验</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Summary -->
+<section id="summary">
+  <div class="container">
+    <div class="section-head">
+      <div class="section-label">Summary</div>
+      <h2 class="section-title">个人总结与反馈</h2>
+      <p class="section-desc">试用期成果回顾与对团队的反馈诉求。</p>
+    </div>
+    <div class="summary-box">
+      <div>
+        <h3>个人总结</h3>
+        <p>试用期内，我聚焦 Shopify 独立站开发与交付，累计完成 120+ 众筹项目与 80+ 代运营项目需求，在商务建站、内部工具、性能优化等方向均取得实质成果。</p>
+        <p style="margin-top:16px">成功将 AI 工具融入页面搭建、文案生成、问题排查等日常环节，显著提升了个人与团队的工作效率。未来将持续深化技术能力，优化项目流程，为 GOC 出海业务贡献更大价值。</p>
+      </div>
+      <div>
+        <h3>反馈与诉求</h3>
+        <ul>
+          <li>希望参与更多 Shopify 模板开发与专项培训，提升模板沉淀质量</li>
+          <li>期望更早介入需求讨论阶段，从技术视角前置评估，更好对齐业务目标</li>
+          <li>希望与团队共同探索 AI 在电商落地页的更多应用场景</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Future -->
+<section class="alt" id="future">
+  <div class="container">
+    <div class="section-head">
+      <div class="section-label">Outlook</div>
+      <h2 class="section-title">未来规划</h2>
+      <p class="section-desc">转正后的三项核心成长方向。</p>
+    </div>
+    <div class="future-grid">
+      <div class="future-card">
+        <div class="num">01</div>
+        <h4>Shopify 高级开发</h4>
+        <p>深入 Liquid 架构、主题定制与 Section 模块化，提升复杂项目独立交付能力。</p>
+      </div>
+      <div class="future-card">
+        <div class="num">02</div>
+        <h4>独立站架构能力</h4>
+        <p>从单页开发延伸至整体站点架构设计，关注性能、SEO 与可维护性。</p>
+      </div>
+      <div class="future-card">
+        <div class="num">03</div>
+        <h4>AI 自动化工作流</h4>
+        <p>持续探索 AI 在开发、测试、文档环节的应用，推动团队工具链升级。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- End -->
+<section class="end">
+  <div class="container">
+    <div class="slogan">GLOBAL ONECLICK · 出海一叮</div>
+    <h2>感谢聆听</h2>
+    <p>邹云冲 · 前端建站</p>
+    <p style="margin-top:-24px;margin-bottom:40px;font-size:15px;color:rgba(255,255,255,0.5)">120+ 众筹项目 · 80+ 代运营项目 · AI 赋能 · 持续成长</p>
+    <div class="qa">Q &amp; A</div>
+    <p class="end-footer">© 2026 Global OneClick 出海一叮 · 邹云冲 · 前端建站 · 试用期转正答辩</p>
+  </div>
+</section>
+
+<div class="page-indicator" id="page-indicator">01 / 13</div>
+
+<script>
+(function () {
+  const sections = Array.from(document.querySelectorAll('section'));
+  const indicator = document.getElementById('page-indicator');
+  const total = sections.length;
+  let current = 0;
+  let locked = false;
+  let wheelDelta = 0;
+
+  function pad(n) {
+    return String(n).padStart(2, '0');
+  }
+
+  function updateIndicator(index) {
+    indicator.textContent = pad(index + 1) + ' / ' + pad(total);
+    const section = sections[index];
+    indicator.classList.toggle('on-dark', section.classList.contains('end'));
+  }
+
+  function goTo(index, behavior) {
+    index = Math.max(0, Math.min(total - 1, index));
+    if (locked && index === current) return;
+    locked = true;
+    current = index;
+    updateIndicator(index);
+    sections[index].scrollIntoView({ behavior: behavior || 'smooth', block: 'start' });
+    window.setTimeout(function () { locked = false; }, 650);
+  }
+
+  function nearestIndex() {
+    const mid = window.innerHeight * 0.45;
+    let best = 0;
+    let bestDist = Infinity;
+    sections.forEach(function (section, i) {
+      const dist = Math.abs(section.getBoundingClientRect().top - mid);
+      if (dist < bestDist) {
+        bestDist = dist;
+        best = i;
+      }
+    });
+    return best;
+  }
+
+  updateIndicator(0);
+
+  if (location.hash) {
+    var hashIndex = sections.findIndex(function (s) { return s.id === location.hash.slice(1); });
+    if (hashIndex >= 0) {
+      current = hashIndex;
+      updateIndicator(hashIndex);
+      sections[hashIndex].scrollIntoView({ behavior: 'auto', block: 'start' });
+    }
+  }
+
+  window.addEventListener('wheel', function (e) {
+    if (!locked) current = nearestIndex();
+    if (locked) {
+      e.preventDefault();
+      return;
+    }
+    wheelDelta += e.deltaY;
+    if (Math.abs(wheelDelta) < 50) return;
+    e.preventDefault();
+    const dir = wheelDelta > 0 ? 1 : -1;
+    wheelDelta = 0;
+    goTo(current + dir);
+  }, { passive: false });
+
+  var touchY = 0;
+  window.addEventListener('touchstart', function (e) {
+    touchY = e.touches[0].clientY;
+  }, { passive: true });
+
+  window.addEventListener('touchend', function (e) {
+    if (locked) return;
+    var dy = touchY - e.changedTouches[0].clientY;
+    if (Math.abs(dy) < 60) return;
+    goTo(current + (dy > 0 ? 1 : -1));
+  }, { passive: true });
+
+  window.addEventListener('keydown', function (e) {
+    if (e.key === 'ArrowDown' || e.key === 'PageDown' || e.key === ' ') {
+      e.preventDefault();
+      goTo(current + 1);
+    } else if (e.key === 'ArrowUp' || e.key === 'PageUp') {
+      e.preventDefault();
+      goTo(current - 1);
+    } else if (e.key === 'Home') {
+      e.preventDefault();
+      goTo(0);
+    } else if (e.key === 'End') {
+      e.preventDefault();
+      goTo(total - 1);
+    }
+  });
+
+  document.querySelectorAll('a[href^="#"]').forEach(function (link) {
+    link.addEventListener('click', function (e) {
+      var id = link.getAttribute('href').slice(1);
+      if (!id) return;
+      var index = sections.findIndex(function (s) { return s.id === id; });
+      if (index >= 0) {
+        e.preventDefault();
+        goTo(index);
+      }
+    });
+  });
+
+  window.addEventListener('scroll', function () {
+    if (locked) return;
+    window.clearTimeout(window.__slideSyncTimer);
+    window.__slideSyncTimer = window.setTimeout(function () {
+      var index = nearestIndex();
+      if (index !== current) {
+        current = index;
+        updateIndicator(index);
+      }
+    }, 80);
+  }, { passive: true });
+})();
+</script>
+
+</body>
+</html>
