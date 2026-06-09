@@ -981,12 +981,129 @@ section.alt {
   .module-grid { grid-template-columns: 1fr 1fr; }
 }
 
+/* 768 以下：纵向滑动 + 内容完整展示 */
+@media (max-width: 768px) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .nav {
+    padding: 0 16px;
+    height: 56px;
+  }
+
+  .nav-title {
+    font-size: 13px;
+  }
+
+  .nav-title span {
+    font-size: 10px;
+  }
+
+  #deck {
+    flex-direction: column;
+    width: 100%;
+    height: 100dvh;
+    overflow-x: hidden;
+    overflow-y: auto;
+    scroll-snap-type: none;
+    scroll-behavior: auto;
+  }
+
+  section {
+    flex: none;
+    width: 100%;
+    min-width: 100%;
+    min-height: 100dvh;
+    height: auto;
+    overflow: visible;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding: 68px 0 56px;
+    scroll-snap-align: none;
+  }
+
+  section > .container {
+    max-height: none;
+    overflow: visible;
+    width: 92%;
+    padding-bottom: 16px;
+  }
+
+  .section-title {
+    font-size: 28px;
+  }
+
+  .section-desc {
+    font-size: 14px;
+  }
+
+  .hero h1 {
+    font-size: 34px;
+  }
+
+  .hero-inner {
+    gap: 32px;
+  }
+
+  .hero-card-inner {
+    padding: 36px 28px 32px;
+  }
+
+  .hero-period {
+    font-size: 12px;
+    letter-spacing: 0.08em;
+  }
+
+  .kpi-grid {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .kpi-card {
+    padding: 28px 20px;
+  }
+
+  .kpi-card-detail .kpi-detail-list li {
+    font-size: 12px;
+  }
+
+  .module-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .project-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .values-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+
+  .summary-box {
+    padding: 28px 24px;
+    gap: 28px;
+  }
+
+  .future-grid {
+    gap: 14px;
+  }
+
+  .page-indicator {
+    right: 16px;
+    bottom: 16px;
+  }
+
+  .end h2 {
+    font-size: 40px;
+  }
+}
+
 @media (max-width: 600px) {
-  .hero h1 { font-size: 36px; }
-  .kpi-grid { grid-template-columns: 1fr 1fr; }
-  .project-grid { grid-template-columns: 1fr; }
-  .values-grid { grid-template-columns: 1fr 1fr; }
-  .module-grid { grid-template-columns: 1fr; }
+  .hero h1 { font-size: 30px; }
+  .values-grid { grid-template-columns: 1fr; }
 }
 </style>
 </head>
@@ -1397,7 +1514,7 @@ section.alt {
       <div>
         <h3>个人总结</h3>
         <p>试用期内，我聚焦 Shopify 独立站开发与交付，累计完成 120+ 众筹项目需求与 80+ 代运营项目需求，在商务建站、内部工具、性能优化等方向均取得实质成果。</p>
-        <p style="margin-top:16px">成功将 AI 工具融入页面搭建、文案生成、问题排查等日常环节，显著提升了个人与团队的工作效率。未来将持续深化技术能力，优化项目流程，为 GOC 出海业务贡献更大价值。</p>
+        <p style="margin-top:16px">成功将 AI 工具融入页面搭建、问题排查等日常环节，显著提升了个人与团队的工作效率。未来将持续深化技术能力，优化项目流程，为 GOC 出海业务贡献更大价值。</p>
       </div>
       <div>
         <h3>反馈与诉求</h3>
@@ -1459,10 +1576,15 @@ section.alt {
   const deck = document.getElementById('deck');
   const sections = Array.from(deck.querySelectorAll('section'));
   const indicator = document.getElementById('page-indicator');
+  const mqVertical = window.matchMedia('(max-width: 768px)');
   const total = sections.length;
   let current = 0;
   let locked = false;
   let wheelDelta = 0;
+
+  function isVertical() {
+    return mqVertical.matches;
+  }
 
   function pad(n) {
     return String(n).padStart(2, '0');
@@ -1474,16 +1596,29 @@ section.alt {
     indicator.classList.toggle('on-dark', section.classList.contains('end'));
   }
 
+  function sectionScrollTop(index) {
+    var top = 0;
+    for (var i = 0; i < index; i++) {
+      top += sections[i].offsetHeight;
+    }
+    return top;
+  }
+
   function goTo(index, behavior) {
     index = Math.max(0, Math.min(total - 1, index));
     if (locked && index === current) return;
     locked = true;
     current = index;
     updateIndicator(index);
+    if (isVertical()) {
+      deck.scrollTop = sectionScrollTop(index);
+      locked = false;
+      return;
+    }
     sections[index].scrollIntoView({
       behavior: behavior || 'smooth',
-      inline: 'start',
-      block: 'nearest'
+      block: 'nearest',
+      inline: 'start'
     });
     window.setTimeout(function () { locked = false; }, 650);
   }
@@ -1491,13 +1626,24 @@ section.alt {
   function nearestIndex() {
     let best = 0;
     let bestDist = Infinity;
-    sections.forEach(function (section, i) {
-      const dist = Math.abs(section.getBoundingClientRect().left);
-      if (dist < bestDist) {
-        bestDist = dist;
-        best = i;
-      }
-    });
+    if (isVertical()) {
+      var anchor = 72;
+      sections.forEach(function (section, i) {
+        var dist = Math.abs(section.getBoundingClientRect().top - anchor);
+        if (dist < bestDist) {
+          bestDist = dist;
+          best = i;
+        }
+      });
+    } else {
+      sections.forEach(function (section, i) {
+        var dist = Math.abs(section.getBoundingClientRect().left);
+        if (dist < bestDist) {
+          bestDist = dist;
+          best = i;
+        }
+      });
+    }
     return best;
   }
 
@@ -1508,11 +1654,16 @@ section.alt {
     if (hashIndex >= 0) {
       current = hashIndex;
       updateIndicator(hashIndex);
-      sections[hashIndex].scrollIntoView({ behavior: 'auto', inline: 'start', block: 'nearest' });
+      if (isVertical()) {
+        deck.scrollTop = sectionScrollTop(hashIndex);
+      } else {
+        sections[hashIndex].scrollIntoView({ behavior: 'auto', inline: 'start', block: 'nearest' });
+      }
     }
   }
 
   window.addEventListener('wheel', function (e) {
+    if (isVertical()) return;
     if (!locked) current = nearestIndex();
     if (locked) {
       e.preventDefault();
@@ -1535,6 +1686,7 @@ section.alt {
   }, { passive: true });
 
   window.addEventListener('touchend', function (e) {
+    if (isVertical()) return;
     if (locked) return;
     var dx = touchX - e.changedTouches[0].clientX;
     var dy = touchY - e.changedTouches[0].clientY;
@@ -1547,6 +1699,7 @@ section.alt {
   }, { passive: true });
 
   window.addEventListener('keydown', function (e) {
+    if (isVertical()) return;
     if (e.key === 'ArrowRight' || e.key === 'ArrowDown' || e.key === 'PageDown' || e.key === ' ') {
       e.preventDefault();
       goTo(current + 1);
@@ -1585,6 +1738,12 @@ section.alt {
       }
     }, 80);
   }, { passive: true });
+
+  mqVertical.addEventListener('change', function () {
+    wheelDelta = 0;
+    current = nearestIndex();
+    updateIndicator(current);
+  });
 })();
 </script>
 
